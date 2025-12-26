@@ -1,0 +1,13 @@
+project_id = "merdowtmdpyxumgzmebr"
+
+[functions.strategy-assistant]
+verify_jwt = false
+
+[functions.run-simulation]
+verify_jwt = false
+
+[functions.fetch-market-data]
+verify_jwt = false
+
+[functions.validate-equation]
+verify_jwt = false

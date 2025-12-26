@@ -1,0 +1,372 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Holographic Glass - Neon Dark Mode Design System */
+
+@layer base {
+  :root {
+    /* The Void (Backgrounds) */
+    --background: 222 47% 4%;
+    --foreground: 210 40% 98%;
+
+    /* Card/Surface */
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary - Cyber Cyan */
+    --primary: 187 94% 53%;
+    --primary-foreground: 222 47% 4%;
+
+    /* Secondary - Laser Pink */
+    --secondary: 330 86% 78%;
+    --secondary-foreground: 222 47% 4%;
+
+    /* Muted */
+    --muted: 217 33% 12%;
+    --muted-foreground: 215 20% 55%;
+
+    /* Accent */
+    --accent: 217 33% 17%;
+    --accent-foreground: 187 94% 53%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Borders */
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 187 94% 53%;
+
+    --radius: 0.75rem;
+
+    /* Neon Trading Colors */
+    --profit: 160 84% 54%;
+    --profit-foreground: 222 47% 4%;
+    --loss: 330 86% 78%;
+    --loss-foreground: 222 47% 4%;
+    --warning: 43 96% 56%;
+    --warning-foreground: 222 47% 4%;
+    --neutral: 215 20% 55%;
+
+    /* Chart colors - Neon palette */
+    --chart-1: 187 94% 53%;
+    --chart-2: 160 84% 54%;
+    --chart-3: 330 86% 78%;
+    --chart-4: 43 96% 56%;
+    --chart-5: 280 87% 65%;
+    --chart-line: 187 94% 53%;
+    --chart-grid: 217 33% 15%;
+    --chart-candle-up: 160 84% 54%;
+    --chart-candle-down: 330 86% 78%;
+
+    /* Sidebar - Deep space */
+    --sidebar-background: 222 47% 5%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 187 94% 53%;
+    --sidebar-primary-foreground: 222 47% 4%;
+    --sidebar-accent: 217 33% 12%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 15%;
+    --sidebar-ring: 187 94% 53%;
+
+    /* Glass recipe */
+    --glass-bg: 10 15 30 / 0.65;
+    --glass-border: 255 255 255 / 0.08;
+    --glass-border-top: 255 255 255 / 0.15;
+    --grid-color: 34 211 238 / 0.15;
+
+    /* Fonts */
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Space Grotesk', 'Inter', sans-serif;
+    --font-mono: 'Fira Code', ui-monospace, monospace;
+
+    /* Shadows - Glow effects */
+    --shadow-glow-cyan: 0 0 20px rgba(34, 211, 238, 0.3);
+    --shadow-glow-pink: 0 0 20px rgba(244, 114, 182, 0.3);
+    --shadow-glow-green: 0 0 20px rgba(52, 211, 153, 0.3);
+    --shadow-glow-amber: 0 0 20px rgba(251, 191, 36, 0.3);
+  }
+
+  /* Dark mode is the default and only mode for this design */
+  .dark {
+    /* Same as root - always dark */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-code {
+    font-family: var(--font-mono);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.5);
+  }
+}
+
+@layer components {
+  /* Glass Panel - Core UI Component */
+  .glass-panel {
+    background: rgba(10, 15, 30, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+  }
+
+  .glass-panel:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.6);
+  }
+
+  /* Neon Text Glows */
+  .text-glow-cyan {
+    text-shadow: 0 0 15px rgba(34, 211, 238, 0.5);
+  }
+
+  .text-glow-green {
+    text-shadow: 0 0 15px rgba(52, 211, 153, 0.5);
+  }
+
+  .text-glow-pink {
+    text-shadow: 0 0 15px rgba(244, 114, 182, 0.5);
+  }
+
+  .text-glow-amber {
+    text-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
+  }
+
+  /* Stat Card - Glass style */
+  .stat-card {
+    @apply glass-panel p-4 rounded-2xl transition-all duration-200;
+  }
+
+  .stat-card:hover {
+    @apply -translate-y-0.5;
+    border-color: hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.1);
+  }
+
+  /* Trading text colors */
+  .profit-text {
+    color: hsl(var(--profit));
+  }
+
+  .loss-text {
+    color: hsl(var(--loss));
+  }
+
+  .profit-bg {
+    background-color: hsl(var(--profit));
+  }
+
+  .loss-bg {
+    background-color: hsl(var(--loss));
+  }
+
+  /* Chart container */
+  .chart-container {
+    @apply glass-panel rounded-3xl p-4 md:p-6;
+  }
+
+  /* Equation editor */
+  .equation-editor {
+    @apply font-mono text-sm bg-muted/50 border border-border/50 rounded-xl p-4;
+  }
+
+  /* Ticker badge */
+  .ticker-badge {
+    @apply inline-flex items-center px-2.5 py-1 text-xs font-mono font-semibold rounded-lg;
+    @apply bg-muted/50 border border-border/50;
+  }
+
+  /* Metric styles */
+  .metric-value {
+    @apply text-2xl md:text-3xl font-bold font-mono tracking-tight;
+  }
+
+  .metric-label {
+    @apply text-[10px] uppercase tracking-widest text-muted-foreground font-bold;
+  }
+
+  /* Ambient background effects */
+  .ambient-mesh {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: 
+      radial-gradient(circle at 10% 20%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(244, 114, 182, 0.06) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Perspective grid floor */
+  .perspective-grid {
+    position: fixed;
+    bottom: -30%;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background-image: 
+      linear-gradient(rgba(34, 211, 238, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(34, 211, 238, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    transform: perspective(500px) rotateX(60deg);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+    z-index: 0;
+    opacity: 0.4;
+    animation: grid-move 20s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes grid-move {
+    0% {
+      transform: perspective(500px) rotateX(60deg) translateY(0);
+    }
+    100% {
+      transform: perspective(500px) rotateX(60deg) translateY(40px);
+    }
+  }
+
+  /* Scanlines effect */
+  .scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0) 50%,
+      rgba(0, 0, 0, 0.1) 50%,
+      rgba(0, 0, 0, 0.1)
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.15;
+  }
+
+  /* Pulse ring animation */
+  @keyframes pulse-ring {
+    0% {
+      box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(34, 211, 238, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(34, 211, 238, 0);
+    }
+  }
+
+  .animate-pulse-ring {
+    animation: pulse-ring 2s infinite;
+  }
+
+  /* Live indicator pulse */
+  .live-indicator {
+    @apply relative flex h-2 w-2;
+  }
+
+  .live-indicator::before {
+    content: '';
+    @apply absolute inline-flex h-full w-full rounded-full bg-profit opacity-75;
+    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .live-indicator::after {
+    content: '';
+    @apply relative inline-flex rounded-full h-2 w-2 bg-profit;
+  }
+
+  /* Floating dock item */
+  .dock-item {
+    @apply relative p-3 rounded-xl transition-all duration-200;
+    @apply text-muted-foreground hover:text-foreground;
+    @apply hover:bg-foreground/10 hover:-translate-y-2 hover:scale-110;
+  }
+
+  .dock-item.active {
+    @apply text-primary bg-primary/10 border border-primary/30;
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
+  }
+
+  .dock-tooltip {
+    @apply absolute -top-12 left-1/2 -translate-x-1/2;
+    @apply px-3 py-1 bg-card border border-border text-[10px] text-foreground;
+    @apply rounded-md opacity-0 transition-opacity whitespace-nowrap shadow-xl;
+    @apply pointer-events-none;
+  }
+
+  .dock-item:hover .dock-tooltip {
+    @apply opacity-100;
+  }
+
+  /* Gradient border animation */
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .gradient-border:hover::before {
+    opacity: 1;
+  }
+}
